@@ -28,7 +28,7 @@ class SiteModeratorSupportService extends AbstractSupportService {
     return $tickets;
   }
 
-  public function getTicket($id) {
+  public function getTicket($id, $site=null) {
     return null;
   }
 }

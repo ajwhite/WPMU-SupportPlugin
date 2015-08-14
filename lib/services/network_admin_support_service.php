@@ -1,6 +1,6 @@
 <?php
 namespace Atticoos\Plugins\MultisiteSupport\Services;
-use Atticoos\Plugins\MultisiteSupport\Models\SupportTicket;
+use Atticoos\Plugins\MultisiteSupport\Models\NetworkSupportTicket;
 use WP_Query;
 
 class NetworkAdminSupportService extends AbstractSupportService {
@@ -20,31 +20,15 @@ class NetworkAdminSupportService extends AbstractSupportService {
 
       while ($query->have_posts()) {
         $query->the_post();
-        $tickets[] = array(
-          'id' => get_the_ID(),
-          'title' => get_the_title(),
-          'message' => get_the_content(),
-          'site' => array(
-            'id' => $site['blog_id'],
-            'url' => get_blog_option($site['blog_id'], 'siteurl'),
-            'name' => get_blog_option($site['blog_id'], 'blogname'),
-          )
-        );
+        $tickets[] = new NetworkSupportTicket(get_the_ID(), $site['blog_id']);
       }
     }
     restore_current_blog();
     return $tickets;
   }
 
-  public function getTicket($id, $site) {
-    $ticket = array();
-    switch_to_blog($site);
-
-    $post = get_post($id);
-
-
-
-    restore_current_blog();
-    return null;
+  public function getTicket($id, $site=null) {
+    $ticket = new NetworkSupportTicket($id, $site);
+    return $ticket;
   }
 }

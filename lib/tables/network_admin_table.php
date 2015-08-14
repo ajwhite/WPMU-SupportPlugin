@@ -1,6 +1,7 @@
 <?php
 namespace Atticoos\Plugins\MultisiteSupport\Tables;
 use Atticoos\Plugins\MultisiteSupport\Services\NetworkAdminSupportService;
+use Atticoos\Plugins\MultisiteSupport\Models\NetworkSupportTicket;
 
 if(!class_exists('WP_List_Table')){
    require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
@@ -45,21 +46,21 @@ class NetworkAdminSupportTicketTable extends WP_List_Table {
   }
 
   public function column_message_title($item) {
-    $title = $item['title'];
+    $title = $item->getSubject();
     // if (!$item->read) {
     //   $title = "<strong>{$item->title}</strong>";
     // } else {
     //   $title = $item->title;
     // }
     $actions = array(
-      'view' => "<a href=\"?page={$_REQUEST['page']}&action=view&post={$item['id']}&site={$item['site']['id']}\">View</a>",
-      'resolve' => "<a href=\"?page={$_REQUEST['page']}&action=resolve&post={$item['id']}\">Mark as Resolved</a>"
+      'view' => "<a href=\"?page={$_REQUEST['page']}&action=view&post={$item->getId()}&site={$item->site['id']}\">View</a>",
+      'resolve' => "<a href=\"?page={$_REQUEST['page']}&action=resolve&post={$item->getId()}\">Mark as Resolved</a>"
     );
     return $title . $this->row_actions($actions, false);
   }
 
   public function column_message_site($item) {
-    return $item['site']['name'];
+    return $item->site['name'];
   }
 
   public function column_message_count() {

@@ -2,7 +2,7 @@
 namespace Atticoos\Plugins\MultisiteSupport\Models;
 
 class NetworkSupportTicket extends SupportTicket {
-  private $site;
+  public $site;
 
   public function __construct($postId, $siteId) {
     parent::__construct($postId, $siteId);
