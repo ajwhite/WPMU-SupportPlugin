@@ -1,6 +1,7 @@
 <?php
 
 namespace Atticoos\Plugins\MultisiteSupport\Init;
+use Atticoos\Plugins\MultisiteSupport\Routers\SiteModeratorRouter;
 
 function custom_post_types() {
   $args = array(
@@ -43,12 +44,7 @@ function register_network_admin_menus() {
 add_action('network_admin_menu', __NAMESPACE__ . '\\register_network_admin_menus');
 
 function render_site_moderator_page() {
-  if (!empty($_REQUEST['action']) && $_REQUEST['action'] == 'create') {
-    include('views/site_moderator/create.php');
-  } else {
-    include('views/site_moderator/list.php');
-  }
-
+  SiteModeratorRouter::route($_REQUEST['action']);
 }
 
 function render_network_admin_page() {

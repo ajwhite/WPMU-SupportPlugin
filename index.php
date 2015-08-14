@@ -11,7 +11,8 @@ $includes = array(
   'lib/init.php',
   'lib/services/abstract_support_service.php',
   'lib/services/network_admin_support_service.php',
-  'lib/services/site_moderator_support_service.php'
+  'lib/services/site_moderator_support_service.php',
+  'lib/routers/site_moderator.php'
 );
 
 foreach ($includes as $file) {
