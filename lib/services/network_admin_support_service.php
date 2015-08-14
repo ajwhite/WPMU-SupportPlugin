@@ -1,5 +1,6 @@
 <?php
 namespace Atticoos\Plugins\MultisiteSupport\Services;
+use Atticoos\Plugins\MultisiteSupport\Models\SupportTicket;
 use WP_Query;
 
 class NetworkAdminSupportService extends AbstractSupportService {
@@ -38,6 +39,8 @@ class NetworkAdminSupportService extends AbstractSupportService {
   public function getTicket($id, $site) {
     $ticket = array();
     switch_to_blog($site);
+
+    $post = get_post($id);
 
 
 
