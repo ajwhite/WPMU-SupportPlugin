@@ -7,7 +7,20 @@ class NetworkAdminSupportService extends AbstractSupportService {
   }
 
   public function getTickets() {
-    return array();
+    $tickets = array();
+    $query = new WP_Query(array(
+      'post_type' => self::POST_TYPE
+    ));
+
+    while ($query->have_posts()) {
+      $query->the_post();
+      $tickets[] = array(
+        'id' => get_the_ID(),
+        'title' => get_the_title(),
+        'message' => get_the_content()
+      );
+    }
+    return $tickets;
   }
 
   public function getTicket($id) {
