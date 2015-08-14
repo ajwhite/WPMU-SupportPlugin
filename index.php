@@ -12,6 +12,7 @@ $includes = array(
   'lib/services/abstract_support_service.php',
   'lib/services/network_admin_support_service.php',
   'lib/services/site_moderator_support_service.php',
+  'lib/tables/site_moderator_table.php',
   'lib/routers/site_moderator.php',
   'lib/ajax.php'
 );

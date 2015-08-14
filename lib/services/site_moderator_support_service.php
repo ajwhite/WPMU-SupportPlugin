@@ -1,5 +1,6 @@
 <?php
 namespace Atticoos\Plugins\MultisiteSupport\Services;
+use WP_Query;
 
 class SiteModeratorSupportService extends AbstractSupportService {
   public function createTicket($title, $content) {
