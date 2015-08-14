@@ -2,6 +2,7 @@
 
 namespace Atticoos\Plugins\MultisiteSupport\Init;
 use Atticoos\Plugins\MultisiteSupport\Routers\SiteModeratorRouter;
+use Atticoos\Plugins\MultisiteSupport\Routers\NetworkAdminRouter;
 
 function custom_post_types() {
   $args = array(
@@ -48,5 +49,5 @@ function render_site_moderator_page() {
 }
 
 function render_network_admin_page() {
-  include('views/network_admin/list.php');
+  NetworkAdminRouter::route($_REQUEST['action']);
 }

@@ -1,6 +1,6 @@
 <?php
 use Atticoos\Plugins\MultisiteSupport\Services\NetworkAdminSupportService;
-$service = new NetworkAdminSupportService()
+$service = new NetworkAdminSupportService();
 $ticket = $service->getTicket($_REQUEST['post'], $_REQUEST['site']);
 ?>
 
@@ -15,8 +15,12 @@ $ticket = $service->getTicket($_REQUEST['post'], $_REQUEST['site']);
 
       <div id="post-body-content">
         <div class="postbox">
-          <h3 class="hndle "><?php echo $ticket->getSubject(); ?></h3>
+          <h3 class="hndle ">Ticket Details</h3>
           <div class="inside">
+            <strong>Subject</strong>
+            <?php echo $ticket->getSubject(); ?><br/>
+            <strong>Message</strong><br/>
+
             <?php echo $ticket->getDescription(); ?>
           </div>
         </div>
