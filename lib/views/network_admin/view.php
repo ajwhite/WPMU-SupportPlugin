@@ -36,6 +36,7 @@ $ticket = $service->getTicket($_REQUEST['post'], $_REQUEST['site']);
                   <label style="font-weight:bold;">Assignee</label><br/>
                   <select class="widefat">
                     <option>Atticus</option>
+                    <option>Jahaz</option>
                   </select>
                 </div>
                 <div class="misc-pub-section">

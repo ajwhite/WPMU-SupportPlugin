@@ -65,11 +65,16 @@ class NetworkAdminSupportTicketTable extends WP_List_Table {
     return count($item->thread);
   }
 
-  public function column_message_assignee() {
-    return 'Atticus';
+  public function column_message_assignee($item) {
+    if ($item->hasAssignee()) {
+      return $item->getAssignee()->display_name;
+    } else {
+      return '--';
+    }
   }
 
   public function column_message_from($item) {
+    return $item->getAuthor()->display_name;
     return 'Mark';
     $name = $item->from['name'];
     $email = "<a href=\"mailto:{$item->from['email']}\">{$item->from['email']}</a>";
