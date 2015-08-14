@@ -24,7 +24,7 @@ class NetworkAdminSupportTicketTable extends WP_List_Table {
     return array(
       'cb' => '<input type="checkbox" />',
       'message_title' => 'Title',
-      'message_count' => 'Conversation',
+      'message_count' => 'Replies',
       'message_site' => 'Site',
       'message_from' => 'From',
       'message_assignee' => 'Assignee',
@@ -35,7 +35,8 @@ class NetworkAdminSupportTicketTable extends WP_List_Table {
   public function get_views() {
     return array(
       'all' => '<a href="#">All</a>',
-      'trash' => '<a href="#">Trash</a>'
+      'opened' => '<a href="#">Opened</a>',
+      'closed' => '<a href="#">Closed</a>'
     );
   }
 
@@ -57,8 +58,8 @@ class NetworkAdminSupportTicketTable extends WP_List_Table {
     return $title . $this->row_actions($actions, false);
   }
 
-  public function column_message_site() {
-    return 'North Carolina';
+  public function column_message_site($item) {
+    return $item['site']['name'];
   }
 
   public function column_message_count() {
