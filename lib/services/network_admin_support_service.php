@@ -2,5 +2,15 @@
 namespace Atticoos\Plugins\MultisiteSupport\Services;
 
 class NetworkAdminSupportService extends AbstractSupportService {
-  // todo
+  public function createTicket() {
+
+  }
+
+  public function getTickets() {
+    return array();
+  }
+
+  public function getTicket($id) {
+    return null;
+  }
 }
