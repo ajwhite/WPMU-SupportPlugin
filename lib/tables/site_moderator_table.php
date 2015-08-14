@@ -24,6 +24,7 @@ class SiteModeratorSupportTicketTable extends WP_List_Table {
     return array(
       'cb' => '<input type="checkbox" />',
       'message_title' => 'Title',
+      'message_count' => 'Conversation',
       'message_from' => 'From',
       'message_date' => 'Date'
     );
@@ -41,16 +42,21 @@ class SiteModeratorSupportTicketTable extends WP_List_Table {
   }
 
   public function column_message_title($item) {
-    return $item['title'];
-    if (!$item->read) {
-      $title = "<strong>{$item->title}</strong>";
-    } else {
-      $title = $item->title;
-    }
+    $title = $item['title'];
+    // if (!$item->read) {
+    //   $title = "<strong>{$item->title}</strong>";
+    // } else {
+    //   $title = $item->title;
+    // }
     $actions = array(
-      'view' => "<a href=\"?page={$_REQUEST['page']}&action=view&post={$item->id}\">View</a>"
+      'view' => "<a href=\"?page={$_REQUEST['page']}&action=view&post={$item->id}\">View</a>",
+      'resolve' => "<a href=\"?page={$_REQUEST['page']}&action=resolve&post={$item['id']}\">Mark as Resolved</a>"
     );
     return $title . $this->row_actions($actions, false);
+  }
+
+  public function column_message_count() {
+    return 3;
   }
 
   public function column_message_from($item) {
