@@ -16,6 +16,7 @@ $includes = array(
   'lib/tables/network_admin_table.php',
   'lib/routers/site_moderator.php',
   'lib/routers/network_admin.php',
+  'lib/models/ticket.php',
   'lib/ajax.php'
 );
 
