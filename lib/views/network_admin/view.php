@@ -60,6 +60,18 @@ $ticket = $service->getTicket($_REQUEST['post'], $_REQUEST['site']);
           </div>
         </div>
       </div>
+
+      <div id="postbox-container-2" class="postbox-container">
+        <?php for($i = 0; $i< 4; $i++): ?>
+        <div class="postbox">
+          <h3 class="hndle">Foobar</h3>
+          <div class="inside">
+            Message one
+          </div>
+        </div>
+        <?php endfor; ?>
+        <?php wp_editor('', 'foobar'); ?>
+      </div>
     </div>
   </div>
 </div>
