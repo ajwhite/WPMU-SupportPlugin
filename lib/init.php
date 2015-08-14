@@ -43,7 +43,12 @@ function register_network_admin_menus() {
 add_action('network_admin_menu', __NAMESPACE__ . '\\register_network_admin_menus');
 
 function render_site_moderator_page() {
-  include('views/site_moderator/list.php');
+  if (!empty($_REQUEST['action']) && $_REQUEST['action'] == 'create') {
+    include('views/site_moderator/create.php');
+  } else {
+    include('views/site_moderator/list.php');
+  }
+
 }
 
 function render_network_admin_page() {
