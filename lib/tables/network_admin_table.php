@@ -61,8 +61,8 @@ class NetworkAdminSupportTicketTable extends WP_List_Table {
     return $item->site['name'];
   }
 
-  public function column_message_count() {
-    return 3;
+  public function column_message_count($item) {
+    return count($item->thread);
   }
 
   public function column_message_assignee() {

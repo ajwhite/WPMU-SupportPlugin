@@ -14,6 +14,10 @@ class SupportTicket {
       'post_parent' => $postId,
       'order' => 'asc'
     ));
+    foreach ($this->thread as $key=>$message) {
+      $this->thread[$key]->author = get_user_by('id', $message->post_author);
+    }
+
     if ($siteId) {
       restore_current_blog();
     }

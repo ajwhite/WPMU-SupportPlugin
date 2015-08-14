@@ -69,7 +69,7 @@ $ticket = $service->getTicket($_REQUEST['post'], $_REQUEST['site']);
       <div id="postbox-container-2" class="postbox-container">
         <?php foreach ($ticket->thread as $message): ?>
         <div class="postbox">
-          <h3 class="hndle"><?php echo $message->post_author; ?></h3>
+          <h3 class="hndle"><?php echo $message->author->display_name; ?></h3>
           <div class="inside">
             <?php echo apply_filters('the_content', $message->post_content); ?>
           </div>
@@ -95,6 +95,8 @@ $ticket = $service->getTicket($_REQUEST['post'], $_REQUEST['site']);
           id: <?php echo $_REQUEST['post']; ?>,
           site: <?php echo $_REQUEST['site']; ?>
         }
+      }, function () {
+        location.reload();
       });
     });
   });
