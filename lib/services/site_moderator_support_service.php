@@ -7,7 +7,7 @@ class SiteModeratorSupportService extends AbstractSupportService {
       'post_title' => $title,
       'post_content' => $content,
       'post_type' => self::POST_TYPE
-    ))
+    ));
   }
 
   public function getTickets() {

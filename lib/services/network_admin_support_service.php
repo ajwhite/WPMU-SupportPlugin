@@ -2,7 +2,7 @@
 namespace Atticoos\Plugins\MultisiteSupport\Services;
 
 class NetworkAdminSupportService extends AbstractSupportService {
-  public function createTicket() {
+  public function createTicket($title, $content) {
 
   }
 
