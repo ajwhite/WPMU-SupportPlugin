@@ -2,14 +2,18 @@
 namespace Atticoos\Plugins\MultisiteSupport\Models;
 
 class SupportTicket {
-  private $assignee;
-  private $threads;
+  public $assignee;
+  public $thread;
 
   public function __construct ($postId, $siteId = null) {
     if ($siteId) {
       switch_to_blog($siteId);
     }
     $this->post = get_post($postId);
+    $this->thread = get_children(array(
+      'post_parent' => $postId,
+      'order' => 'asc'
+    ));
     if ($siteId) {
       restore_current_blog();
     }

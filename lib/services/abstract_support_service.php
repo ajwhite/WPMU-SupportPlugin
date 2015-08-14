@@ -11,7 +11,7 @@ abstract class AbstractSupportService {
   public function respondToTicket($id, $message, $site=null) {
     $args = array(
       'post_title' => 'Response to ticket ' . $id,
-      'post_content' => $content,
+      'post_content' => $message,
       'post_parent' => $id
     );
     if ($site) {

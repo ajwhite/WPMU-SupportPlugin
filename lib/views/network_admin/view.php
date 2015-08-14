@@ -4,8 +4,6 @@ $service = new NetworkAdminSupportService();
 $ticket = $service->getTicket($_REQUEST['post'], $_REQUEST['site']);
 ?>
 
-
-
 <div class="wrap">
 
   <h2>View Message</h2>
@@ -69,14 +67,14 @@ $ticket = $service->getTicket($_REQUEST['post'], $_REQUEST['site']);
       </div>
 
       <div id="postbox-container-2" class="postbox-container">
-        <?php for($i = 0; $i< 4; $i++): ?>
+        <?php foreach ($ticket->thread as $message): ?>
         <div class="postbox">
-          <h3 class="hndle">Foobar</h3>
+          <h3 class="hndle"><?php echo $message->post_author; ?></h3>
           <div class="inside">
-            Message one
+            <?php echo apply_filters('the_content', $message->post_content); ?>
           </div>
         </div>
-        <?php endfor; ?>
+        <?php endforeach; ?>
         <?php wp_editor('', 'ticket-message'); ?>
         <br>
         <input type="button" value="Reply" id="reply" class="button button-primary button-large" />
@@ -90,11 +88,10 @@ $ticket = $service->getTicket($_REQUEST['post'], $_REQUEST['site']);
 (function ($) {
   $(document).ready(function () {
     $('#reply').click(function () {
-      console.log('message', $('#ticket-message').val());
       $.post('/wp-admin/admin-ajax.php', {
         action: 'respondToTicket',
         ticket: {
-          message: $('#ticket-message').val(),
+          message: tinyMCE.activeEditor.getContent(),
           id: <?php echo $_REQUEST['post']; ?>,
           site: <?php echo $_REQUEST['site']; ?>
         }
