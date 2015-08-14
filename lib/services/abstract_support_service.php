@@ -6,5 +6,5 @@ abstract class AbstractSupportService {
 
   abstract public function createTicket($title, $content);
   abstract public function getTickets();
-  abstract public function getTicket($id);
+  abstract public function getTicket($id, $site=null);
 }

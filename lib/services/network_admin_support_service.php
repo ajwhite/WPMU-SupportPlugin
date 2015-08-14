@@ -35,7 +35,13 @@ class NetworkAdminSupportService extends AbstractSupportService {
     return $tickets;
   }
 
-  public function getTicket($id) {
+  public function getTicket($id, $site) {
+    $ticket = array();
+    switch_to_blog($site);
+
+
+
+    restore_current_blog();
     return null;
   }
 }

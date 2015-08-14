@@ -52,7 +52,7 @@ class NetworkAdminSupportTicketTable extends WP_List_Table {
     //   $title = $item->title;
     // }
     $actions = array(
-      'view' => "<a href=\"?page={$_REQUEST['page']}&action=view&post={$item->id}\">View</a>",
+      'view' => "<a href=\"?page={$_REQUEST['page']}&action=view&post={$item['id']}&site={$item['site']['id']}\">View</a>",
       'resolve' => "<a href=\"?page={$_REQUEST['page']}&action=resolve&post={$item['id']}\">Mark as Resolved</a>"
     );
     return $title . $this->row_actions($actions, false);
