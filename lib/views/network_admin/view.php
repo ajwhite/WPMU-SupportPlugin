@@ -33,26 +33,33 @@ $ticket = $service->getTicket($_REQUEST['post'], $_REQUEST['site']);
             <div id="submitpost" class="submitbox">
 
               <div id="misc-publishing-actions">
+
                 <div class="misc-pub-section">
-                  <label style="font-weight:bold;">From:</label>
-                  <span>NAME</span>
+                  <label style="font-weight:bold;">Assignee</label><br/>
+                  <select class="widefat">
+                    <option>Atticus</option>
+                  </select>
                 </div>
                 <div class="misc-pub-section">
-                  <label style="font-weight:bold;">Email:</label>
-                  <span>EMAIL</span>
+                  <label style="font-weight:bold;">Priority</label><br/>
+                  <select class="widefat">
+                    <option>High</option>
+                  </select>
                 </div>
                 <div class="misc-pub-section">
-                  <label style="font-weight:bold;">Date:</label>
-                  <span>DATEE</span>
+                  <label style="font-weight:bold;">Category</label><br/>
+                  <select class="widefat">
+                    <option>Needs Help</option>
+                  </select>
                 </div>
               </div>
 
               <div id="major-publishing-actions">
                 <div id="delete-action">
-                  <a href="#" class="submitdelete deletion">Trash</a>
+                  <a href="#" class="submitdelete deletion">Close</a>
                 </div>
                 <div id="publishing-action">
-                  <input type="button" value="Okay" id="publish" class="button button-primary button-large" />
+                  <input type="button" value="Save" id="publish" class="button button-primary button-large" />
                 </div>
                 <div class="clear"></div>
               </div>
