@@ -91,7 +91,15 @@ $ticket = $service->getTicket($_REQUEST['post'], $_REQUEST['site']);
   $(document).ready(function () {
     $('#reply').click(function () {
       console.log('message', $('#ticket-message').val());
-    })
+      $.post('/wp-admin/admin-ajax.php', {
+        action: 'respondToTicket',
+        ticket: {
+          message: $('#ticket-message').val(),
+          id: <?php echo $_REQUEST['post']; ?>,
+          site: <?php echo $_REQUEST['site']; ?>
+        }
+      });
+    });
   });
 })(jQuery);
 </script>
