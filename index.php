@@ -13,6 +13,7 @@ $includes = array(
   'lib/services/network_admin_support_service.php',
   'lib/services/site_moderator_support_service.php',
   'lib/tables/site_moderator_table.php',
+  'lib/tables/network_admin_table.php',
   'lib/routers/site_moderator.php',
   'lib/routers/network_admin.php',
   'lib/ajax.php'
