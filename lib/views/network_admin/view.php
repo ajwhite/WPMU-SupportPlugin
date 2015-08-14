@@ -77,8 +77,21 @@ $ticket = $service->getTicket($_REQUEST['post'], $_REQUEST['site']);
           </div>
         </div>
         <?php endfor; ?>
-        <?php wp_editor('', 'foobar'); ?>
+        <?php wp_editor('', 'ticket-message'); ?>
+        <br>
+        <input type="button" value="Reply" id="reply" class="button button-primary button-large" />
       </div>
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+(function ($) {
+  $(document).ready(function () {
+    $('#reply').click(function () {
+      console.log('message', $('#ticket-message').val());
+    })
+  });
+})(jQuery);
+</script>
