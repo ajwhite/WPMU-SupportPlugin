@@ -1,16 +1,19 @@
 <?php
+/**
+ * Plugin Name: Multisite Support
+ * Description: Allows multisite instances to have support access with the network admins
+ * Version: 1.0
+ * Author: Atticus White
+ * Author URI: http://atticuswhite.com
+ */
 
-$sanders_includes = array(
+$includes = array(
   'lib/init.php'
 );
 
-foreach ($sanders_includes as $file) {
-  if (!$filepath = locate_template($file)) {
-    trigger_error(sprintf('Error locating %s for inclusion', $file), E_USER_ERROR);
-  }
-
-  require_once($filepath);
+foreach ($includes as $file) {
+  require_once($file);
 }
 
 // cleanup global vars
-unset($file, $filepath);
+unset($file);
