@@ -26,4 +26,8 @@ class SupportTicket {
   public function getDescription() {
     return $this->post->post_content;
   }
+
+  public function hasSeen() {
+    return false;
+  }
 }

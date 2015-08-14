@@ -31,4 +31,8 @@ class NetworkAdminSupportService extends AbstractSupportService {
     $ticket = new NetworkSupportTicket($id, $site);
     return $ticket;
   }
+
+  public function hasSeen() {
+    return true;
+  }
 }

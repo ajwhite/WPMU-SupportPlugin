@@ -47,11 +47,9 @@ class NetworkAdminSupportTicketTable extends WP_List_Table {
 
   public function column_message_title($item) {
     $title = $item->getSubject();
-    // if (!$item->read) {
-    //   $title = "<strong>{$item->title}</strong>";
-    // } else {
-    //   $title = $item->title;
-    // }
+    if (!$item->hasSeen()) {
+      $title = "<strong>{$title}</strong>";
+    }
     $actions = array(
       'view' => "<a href=\"?page={$_REQUEST['page']}&action=view&post={$item->getId()}&site={$item->site['id']}\">View</a>",
       'resolve' => "<a href=\"?page={$_REQUEST['page']}&action=resolve&post={$item->getId()}\">Mark as Resolved</a>"
