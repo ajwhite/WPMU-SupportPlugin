@@ -2,6 +2,7 @@
 use Atticoos\Plugins\MultisiteSupport\Services\NetworkAdminSupportService;
 $service = new NetworkAdminSupportService();
 $ticket = $service->getTicket($_REQUEST['post'], $_REQUEST['site']);
+$assignees = $service->getAssignees();
 ?>
 
 <div class="wrap">
@@ -35,8 +36,16 @@ $ticket = $service->getTicket($_REQUEST['post'], $_REQUEST['site']);
                 <div class="misc-pub-section">
                   <label style="font-weight:bold;">Assignee</label><br/>
                   <select class="widefat">
-                    <option>Atticus</option>
-                    <option>Jahaz</option>
+                    <option value="">-- Select Assignee --</option>
+                    <?php foreach($assignees as $assignee): ?>
+                      <option
+                        value="<?php echo $assignee->ID; ?>"
+                        <?php if ($ticket->hasAssignee() && $ticket->getAssignee()->ID === $assignee->ID): ?>
+                        selected
+                        <?php endif; ?>
+                        ><?php echo $assignee->display_name; ?>
+                      </option>
+                    <?php endforeach; ?>
                   </select>
                 </div>
                 <div class="misc-pub-section">

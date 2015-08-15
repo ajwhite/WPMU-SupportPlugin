@@ -4,6 +4,9 @@ use Atticoos\Plugins\MultisiteSupport\Models\NetworkSupportTicket;
 use WP_Query;
 
 class NetworkAdminSupportService extends AbstractSupportService {
+  const SITE_ADMIN_META_KEY = 'site_admins';
+  const ADMIN_SLUG = 'slug';
+
   public function createTicket($title, $content) {
 
   }
@@ -34,5 +37,16 @@ class NetworkAdminSupportService extends AbstractSupportService {
 
   public function hasSeen() {
     return true;
+  }
+
+  public function getAssignees() {
+    $admins = array();
+    $adminSlugs = get_site_option(self::SITE_ADMIN_META_KEY, true);
+
+    foreach ($adminSlugs as $slug) {
+      $userObject = get_user_by(self::ADMIN_SLUG, $slug);
+      $admins[] = $userObject->data;
+    }
+    return $admins;
   }
 }
