@@ -51,13 +51,29 @@ $assignees = $service->getAssignees();
                 <div class="misc-pub-section">
                   <label style="font-weight:bold;">Priority</label><br/>
                   <select class="widefat">
-                    <option>High</option>
+                    <option value="">-- Select Priority --</option>
+                    <?php foreach (NetworkAdminSupportService::$priorities as $key=>$value): ?>
+                    <option
+                      value="<?php echo $key; ?>"
+                      <?php if ($ticket->getPriority() == $key): ?>
+                      selected
+                      <?php endif; ?>
+                      ><?php echo $value; ?></option>
+                    <?php endforeach; ?>
                   </select>
                 </div>
                 <div class="misc-pub-section">
                   <label style="font-weight:bold;">Category</label><br/>
                   <select class="widefat">
-                    <option>Needs Help</option>
+                    <option value="">-- Select Category--</option>
+                    <?php foreach (NetworkAdminSupportService::$categories as $key=>$value): ?>
+                      <option
+                        value="<?php echo $key; ?>"
+                        <?php if ($ticket->getCategory() == $key): ?>
+                        selected
+                        <?php endif; ?>
+                        ><?php echo $value; ?></option>
+                    <?php endforeach;?>
                   </select>
                 </div>
               </div>

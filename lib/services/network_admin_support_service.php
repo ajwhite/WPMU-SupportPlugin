@@ -6,6 +6,8 @@ use WP_Query;
 class NetworkAdminSupportService extends AbstractSupportService {
   const SITE_ADMIN_META_KEY = 'site_admins';
   const ADMIN_SLUG = 'slug';
+  public static $priorities = array('low' => 'Low', 'medium' => 'Medium', 'high' => 'High');
+  public static $categories = array('help' => 'Needs Help');
 
   public function createTicket($title, $content) {
 
